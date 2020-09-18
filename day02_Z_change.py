@@ -44,21 +44,17 @@ def convert(s, numRows):
                 target.append(tuple(son))
                 son = set_empty_string(son, numRows)
             count = 0
-        else:
-            print("count", count)
 
     print("target", target)
     # 遍历结果，逐行遍历
     result = []
-    count = 0
     for i in range(0, numRows):
         for j in target:
-            if j[count] != "":
-                result.append(j[count])
-        count = count + 1
+            if j[i] != "":
+                result.append(j[i])
     return result
 
 
-target = convert(str_input, 4)
+target = convert(str_input, 3)
 target = "".join(target)
 print("得到的字符串为:", target)
