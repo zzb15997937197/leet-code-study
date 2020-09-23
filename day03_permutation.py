@@ -4,6 +4,7 @@
 
 解题思想: 固定第一个元素，然后后面的元素再进行全排列。
 然后再固定第二个元素，对后面的元素再进行全排列。
+a=[1,3,5]
 
 '''
 
@@ -18,7 +19,7 @@ def permutations(arr, position, end):
             print("互换位置后:", arr)
             target = permutations(arr, position + 1, end)
             if target is not None:
-                print("target:", target)
+                print("得到结果:", target)
             print("全排列后:", arr)
             arr[index], arr[position] = arr[position], arr[index]
             print("恢复位置:", arr)
