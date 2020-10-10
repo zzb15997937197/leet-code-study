@@ -76,6 +76,8 @@ class SingleLinkedList(object):
                             node.next = current_node
                             self.header = node
                         else:
+                            # 1. 新节点的next指向当前节点
+                            # 2. 上一个节点的next指向新节点
                             node.next = current_node
                             last_node.next = node
                         self.length += 1
@@ -90,6 +92,24 @@ class SingleLinkedList(object):
                     self.header = node
                     self.length += 1
                     return self
+
+    # 删除指定节点
+    def removce_node_index(self, index):
+        current = self.header
+        count = 0
+        while current is not None:
+            if index == count:
+                print("找到指定节点!")
+                if index == 0:
+                    self.header = current.next
+                else:
+                    last.next = current.next
+                self.length -= 1
+                return self
+            count += 1
+            last = current
+            current = current.next
+        return self
 
     # 遍历链表
     def traversing_list(self):
@@ -127,4 +147,6 @@ if __name__ == '__main__':
     # 在index=2处插入一个节点
     node4 = Node(5)
     linked_list.add_node_index(node4, 0)
+    linked_list.traversing_list()
+    linked_list.removce_node_index(0)
     linked_list.traversing_list()
