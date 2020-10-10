@@ -50,21 +50,71 @@ class SingleLinkedList(object):
         self.length += 1
         return self
 
+    # 在指定位置节点前插入一个新的节点,下标从0开始
+    '''
+      插入的节点的前一个节点的next指向新的节点，新的节点的next指向前一个节点之前指向的节点
+    '''
+
+    def add_node_index(self, node, index):
+        if self.is_empty():
+            self.header = node
+            self.length = 1
+            return self
+        if index > self.length - 1 or index < 0:
+            print("超出范围,插入失败!")
+            return self
+        else:
+            current_node = self.header
+            count = 0
+            while True:
+                if current_node is not None:
+                    # 最少有2个节点
+                    if count == index:
+                        print("...找到位置....")
+                        if count == 0:
+                            # 插入到头节点之前
+                            node.next = current_node
+                            self.header = node
+                        else:
+                            node.next = current_node
+                            last_node.next = node
+                        self.length += 1
+                        return self
+                    else:
+                        count += 1
+                        last_node = current_node
+                        current_node = current_node.next
+                else:
+                    # 只有一个头节点
+                    node.next = current_node
+                    self.header = node
+                    self.length += 1
+                    return self
+
     # 遍历链表
     def traversing_list(self):
-        header = self.header
-        result = ",val:" + str(header.val)
-        while header.next is not None:
-            result = result + "-->" + ",val:" + str(header.next.val)
-            header = header.next
+        header_node = self.header
+        result = ",val:" + str(header_node.val)
+        while header_node.next is not None:
+            result = result + "-->" + ",val:" + str(header_node.next.val)
+            temp = header_node
+            header_node = header_node.next
+            if temp == header_node:
+                print("出现自己指向自己的问题！")
+                return
         print("链表为:", result, ",长度为:" + str(self.length))
 
 
 if __name__ == '__main__':
     print("初始化一个链表!")
-    header = Node(1)
+    header = Node(0)
     linked_list = SingleLinkedList()
-    linked_list.add_node_from_head(header)
+    linked_list.add_node_index(header, 0)
+    linked_list.traversing_list()
+    node0 = Node(1)
+    # 添加同一个对象会出现自己指向自己的问题
+    # linked_list.add_node_from_head(header)
+    linked_list.add_node_from_head(node0)
     linked_list.traversing_list()
     # 再头部加2个节点
     node1 = Node(2)
@@ -73,4 +123,8 @@ if __name__ == '__main__':
     linked_list.traversing_list()
     node3 = Node(4)
     linked_list.add_node_from_behind(node3)
+    linked_list.traversing_list()
+    # 在index=2处插入一个节点
+    node4 = Node(5)
+    linked_list.add_node_index(node4, 0)
     linked_list.traversing_list()
