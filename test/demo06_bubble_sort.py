@@ -22,14 +22,14 @@ class ArrayBub(object):
     @staticmethod
     def bubble_sort(array, ele1, ele2):
         temp = array[ele1]
-        array[ele1] = ele2
+        array[ele1] = array[ele2]
         array[ele2] = temp
 
 
 if __name__ == "__main__":
     print()
     bubble = ArrayBub()
-    bubble.add_ele(3).add_ele(2).add_ele(1).add_ele(5).add_ele(9)
+    bubble.add_ele(3).add_ele(2).add_ele(1).add_ele(5).add_ele(9).add_ele(1)
     r = bubble.travel_array()
     print(r)
     for out in range(len(r) - 1, -1, -1):
