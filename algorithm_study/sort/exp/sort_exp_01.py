@@ -37,6 +37,42 @@ def left_bubble_sort(array):
 '''
 
 
+def improve_bubble_sort(array):
+    times = len(array) // 2
+    for i in range(0, times):
+        for j in range(i, len(array) - i - 1):
+            if array[j] > array[j + 1]:
+                swap(array, j, j + 1)
+
+        for k in range(0, i):
+            if array[k] > array[k + 1]:
+                swap(array, k, k + 1)
+    return array
+
+
+# 双向冒泡排序
+def improve_bubble_sort_two_way(array):
+    print("双向冒泡排序")
+    left = 0
+    right = len(array) - 1
+    while left < right:
+
+        for i in range(left + 1, len(array)):
+            # 向左冒泡
+            if array[left] > array[i]:
+                swap(array, left, i)
+        left += 1
+
+        if left >= right:
+            break
+        for j in range(right, -1, -1):
+            # 向右冒泡
+            if array[right] < array[j]:
+                swap(array, right, j)
+        right -= 1
+    return array
+
+
 # 选择排序
 
 def selection_sort(array):
@@ -101,7 +137,7 @@ if __name__ == "__main__":
         if number == "1":
             print("冒泡排序")
             sort_name = "冒泡排序"
-            r = bubble_sort(r)
+            r = improve_bubble_sort(r)
         elif number == "2":
             print("选择排序")
             sort_name = "选择排序"
