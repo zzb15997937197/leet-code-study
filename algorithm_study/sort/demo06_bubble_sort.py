@@ -5,6 +5,33 @@
 '''
 
 
+def swap(array, ele1, ele2):
+    temp = array[ele1]
+    array[ele1] = array[ele2]
+    array[ele2] = temp
+
+
+# 大的数往右侧移动,外循环从大到小
+def bubble_sort(array):
+    for i in range(len(array) - 1, -1, -1):
+        for j in range(0, i):
+            if array[j] > array[j + 1]:
+                swap(array, j, j + 1)
+
+
+# 大的数往左侧移动，外循环从小到大。
+def left_bubble_sort(array):
+    for i in range(0, len(array) - 1):
+        for j in range(0, len(array) - i - 1):
+            if array[j] < array[j + 1]:
+                swap(array, j, j + 1)
+
+
+'''
+以上两种方式，都是从0位到未排序好的那一位之间的元素之间，进行两两比较，有一边倒的趋势。
+'''
+
+
 class ArrayBub(object):
 
     def __init__(self):
@@ -19,12 +46,6 @@ class ArrayBub(object):
     def travel_array(self):
         return [x for x in self.array]
 
-    @staticmethod
-    def bubble_sort(array, ele1, ele2):
-        temp = array[ele1]
-        array[ele1] = array[ele2]
-        array[ele2] = temp
-
 
 if __name__ == "__main__":
     print()
@@ -32,8 +53,5 @@ if __name__ == "__main__":
     bubble.add_ele(3).add_ele(2).add_ele(1).add_ele(5).add_ele(9).add_ele(1)
     r = bubble.travel_array()
     print(r)
-    for out in range(len(r) - 1, -1, -1):
-        for i in range(0, out):
-            if r[i] > r[i + 1]:
-                bubble.bubble_sort(r, i, i + 1)
+    left_bubble_sort(r)
     print("排序后的结果为:", r)
