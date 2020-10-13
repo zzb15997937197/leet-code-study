@@ -27,6 +27,11 @@ class OddEvenSort(object):
         return [x for x in self.array]
 
 
+'''
+拿出奇数项和偶数项进行排序
+'''
+
+
 def odd_even_sort(array):
     for i in range(0, len(array) // 2):
 
