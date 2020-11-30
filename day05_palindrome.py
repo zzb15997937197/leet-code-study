@@ -35,7 +35,7 @@ def isPalindrome(x):
         for i in range(0, length // 2):
             # 每次取出最高位数和最低位数进行比较(先取余，再整除取出每一位),如果不相等就直接返回False
             left = (x % pow(10, length - i)) // (10 ** (length - i - 1))
-            right = x % pow(10, i + 1) // (10 ** i)
+            right = (x % pow(10, i + 1)) // (10 ** i)
             if left != right:
                 return False
     return True
