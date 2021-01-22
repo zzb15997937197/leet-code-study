@@ -11,6 +11,8 @@ def find_number(target):
         for j in range(1, i):
             if i % j == 0:
                 s -= j
+                if s < 0:
+                    continue
         if s == 0:
             print("完数:" + str(i))
             res.append(i)
