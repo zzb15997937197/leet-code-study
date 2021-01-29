@@ -1,8 +1,6 @@
 # 一个数如果恰好等于它的因子之和，这个数就称为"完数"。例如6=1＋2＋3.编程找出1000以内的所有完数。
 from distlib.compat import raw_input
 
-print("将每一项获取因子后,作减法，如果减到0，那么该数就为完数!")
-
 
 def find_number(target):
     res = []
@@ -12,7 +10,7 @@ def find_number(target):
             if i % j == 0:
                 s -= j
                 if s < 0:
-                    continue
+                    break
         if s == 0:
             print("完数:" + str(i))
             res.append(i)
