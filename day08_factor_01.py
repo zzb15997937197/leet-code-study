@@ -2,7 +2,7 @@
 from distlib.compat import raw_input
 
 
-# 获取该数的所有因子
+# 此方法为获取该数的所有因子, 为获取完数做准备
 def find_number(target):
     end = int(target) + 1
     res = []
